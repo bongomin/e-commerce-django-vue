@@ -6,7 +6,7 @@ from django.core.files import File
 from django.db import models
 
 class Category(models.Model):
-    named = models.CharField(max_length=220)
+    name = models.CharField(max_length=220)
     slug  = models.SlugField()
 
     class meta:
@@ -20,7 +20,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    named = models.CharField(max_length=220)
+    name = models.CharField(max_length=220)
     slug = models.SlugField()
     description = models.CharField(max_length=250, blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
